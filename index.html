@@ -1,61 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+  <title>For You Chellameyyy ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #ffe6eb;
+      margin: 0;
+      padding: 20px;
+    }
 
-<style>
-body {
-    font-family: Arial;
-    background: #ffe6ea;
-    text-align: center;
-    padding: 20px;
-}
-h1 { color: #ff4d6d; }
+    h2 {
+      color: #e6005c;
+    }
 
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 30px;
-}
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
 
-.box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    cursor: pointer;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
 
-#content {
-    margin-top: 30px;
-}
-</style>
+    .hidden {
+      display: none;
+    }
+
+    .content {
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff4d88;
+      color: white;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Choose an Envelope 💌</h1>
+<h2>Choose an Envelope 💌</h2>
 
 <div class="container">
-    <div class="box" onclick="show('mem')">Our Memories 📸</div>
-    <div class="box" onclick="show('let')">My Letter 💌</div>
-    <div class="box" onclick="show('love')">Why I Love You ❤️</div>
-    <div class="box" onclick="show('date')">Date Night 💖</div>
+
+  <div class="card" onclick="showContent('memories')">
+    Our Memories
+  </div>
+
+  <div class="card" onclick="showContent('letter')">
+    My Letter
+  </div>
+
+  <div class="card" onclick="showContent('love')">
+    Why I Love You
+  </div>
+
+  <div class="card" onclick="showContent('date')">
+    Date Night?
+  </div>
+
 </div>
 
-<div id="content"></div>
+<div id="contentBox" class="content hidden"></div>
 
 <script>
-function show(type) {
-    let text = "";
+function showContent(type) {
+  let content = "";
 
-    if(type==="mem") text = "Add your photos here ❤️";
-    if(type==="let") text = "Dear Love, you are my everything 💌";
-    if(type==="love") text = "I love your smile 😊<br>I love your care 💖";
-    if(type==="date") text = "Next date: Movie + Dinner 🍿";
+  if(type === "memories") {
+  content = `
+    <h3>Our Memories 📸</h3>
 
-    document.getElementById("content").innerHTML = text;
+    <div class="slideshow">
+      <img id="slide" src="img1.jpg" width="100%" style="border-radius:10px;">
+      <img id="slide" src="img2.jpg" width="100%" style="border-radius:10px;">
+      <img id="slide" src="img3.jpg" width="100%" style="border-radius:10px;">
+      <img id="slide" src="img4.jpg" width="100%" style="border-radius:10px;">
+      <img id="slide" src="img5.jpg" width="100%" style="border-radius:10px;">
+      <img id="slide" src="img6.jpg" width="100%" style="border-radius:10px;">
+    </div>
+
+    <br>
+
+    <button onclick="prevSlide()">⬅️</button>
+    <button onclick="nextSlide()">➡️</button>
+  `;
+}
+
+  if(type === "letter") {
+    content = `
+      <h3>My Letter 💌</h3>
+      <p>
+      I just want to say... you are the best thing in my life ❤️
+      </p>
+      <!-- EDIT YOUR LETTER HERE -->
+    `;
+  }
+
+  if(type === "love") {
+    content = `
+      <h3>Why I Love You ❤️</h3>
+      <ul>
+        <li>Your smile 😊</li>
+        <li>Your care 💕</li>
+        <li>Your support 🤗</li>
+      </ul>
+      <!-- EDIT REASONS HERE -->
+    `;
+  }
+
+  if(type === "date") {
+    content = `
+      <h3>Date Night? 🍽️</h3>
+      <p>Let's go out this weekend ❤️</p>
+      <button onclick="alert('She said YES 💖')">Accept</button>
+      <!-- CHANGE MESSAGE HERE -->
+    `;
+  }
+
+  document.getElementById("contentBox").innerHTML = content;
+  document.getElementById("contentBox").classList.remove("hidden");
+    
+}
+</script>
+<script>
+let images = [
+  "img1.jpg",
+  "img2.jpg",
+  "img3.jpg",
+  "img4.jpg",
+  "img5.jpg",
+  "img6.jpg"
+]; // 👉 ADD YOUR IMAGE NAMES HERE
+
+let index = 0;
+
+function showSlide() {
+  document.getElementById("slide").src = images[index];
+}
+
+function nextSlide() {
+  index = (index + 1) % images.length;
+  showSlide();
+}
+
+function prevSlide() {
+  index = (index - 1 + images.length) % images.length;
+  showSlide();
 }
 </script>
 
