@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #ffe6ea;
+    text-align: center;
+    padding: 20px;
+}
+h1 { color: #ff4d6d; }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#content {
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Choose an Envelope 💌</h1>
+
+<div class="container">
+    <div class="box" onclick="show('mem')">Our Memories 📸</div>
+    <div class="box" onclick="show('let')">My Letter 💌</div>
+    <div class="box" onclick="show('love')">Why I Love You ❤️</div>
+    <div class="box" onclick="show('date')">Date Night 💖</div>
+</div>
+
+<div id="content"></div>
+
+<script>
+function show(type) {
+    let text = "";
+
+    if(type==="mem") text = "Add your photos here ❤️";
+    if(type==="let") text = "Dear Love, you are my everything 💌";
+    if(type==="love") text = "I love your smile 😊<br>I love your care 💖";
+    if(type==="date") text = "Next date: Movie + Dinner 🍿";
+
+    document.getElementById("content").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
